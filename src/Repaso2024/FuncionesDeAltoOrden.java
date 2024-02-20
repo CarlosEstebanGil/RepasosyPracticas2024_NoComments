@@ -2,7 +2,7 @@ package Repaso2024;
 
 import java.util.function.Function;
 
-public class MainApplication {
+public class FuncionesDeAltoOrden {
 
 		
 		//A) atrib function apunta auna imple lmbda de formato compat
@@ -24,7 +24,7 @@ public class MainApplication {
 		public static void main(String[] args) {
 			
 			//Ejs Usos:
-			MainApplication app = new MainApplication(); 
+			FuncionesDeAltoOrden app = new FuncionesDeAltoOrden(); 
 			
 			//A)
 				String str= app.convertirMayusculas.apply("charly");
