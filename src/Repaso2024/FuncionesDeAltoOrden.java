@@ -31,7 +31,6 @@ public class FuncionesDeAltoOrden {
 				
 				System.out.println(str);
 
-				
 			//B) 
 				app.imprimir(app.convertirMayusculas, "san");
 				
