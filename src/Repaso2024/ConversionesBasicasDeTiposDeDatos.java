@@ -129,10 +129,22 @@ public class ConversionesBasicasDeTiposDeDatos {
 								 + "icaracter:" + icaracter + " \n"  //
 								 + "valor de un caracter no numerico:" + caracterNoNumerico // explicacion: en: (**)
 								 );   
+			// Saber: 
+				char caracternumerico2 = 2; //funciona, 
+			//pero:
+				int iNumer=1; 
+				char caracternumerico3 = (char)iNumer; // no funciona xq necesita un numero q a lo sumo guarda su representacion unicode auto    	
+												 // pero si le paso un int definido como int ent no hace esa conversion auto,  
+												 // x eso debo castear a (char) iNum
+		System.out.println("\n " + "caracternumerico2:" +(int)caracternumerico2 + " \n caracterNumerico3:" + (int)caracternumerico3 );
+		// |__> MNEMO: ( la explicacion del xq se encuentra mas abajo )
+		//		
+		//	|_> COMO NMENO SABER QUE SI IMPRIMO UN CHAR NUMERICO ME IMPRIME EL UNICODE X ESO DEBO CAST A INT PERO SI
+		//		EL CHAR ES ALFANUMERICO (NO NUMERICO) ENTONCES NO HACE FALTA CAR XQ AUTO ME IMPRIME LA REPRESENTACION Y NO SU UNICODE			
+			
+		// Saber tmb: el syso requiere explicitamente convertir un carr a str xapoder imprimirlo. NO imprime char arrays de una.  
 		
-			// Saber: el syso requiere explicitamente convertir un carr a str xapoder imprimirlo. NO imprime char arrays de una.  
-		
-			// chars en java:
+			// chars en java: 
 			//	____________
 		
 			//	si tengo un caracter conteniendo el caracter 'b' que me guarda, el codigo ascii del mismo? 
