@@ -277,4 +277,22 @@ public class Colecciones {
 				    }	
 			*/ 
 				
+			/* Otra mas podria haber sido un simple procedimiento en esta clase con un of cointains then add else actionxRepe pero
+			 * esa es la opcion mas pobre porque solo serviria en esta clase, o incluso si lo hiciera static seria una imple de un 
+			 * extend de un set en si pero en esta clase que nada tiene que ver con sets cuando esa extension deberia estar en 
+			 * una subclase o subinterface de set o alguna imple de set, ej, si dese aca lo sig:
+			 * 			
+			 * 	public static void agregarElemento(HashMap<String, Integer> mapa, String clave, int valor) {
+        			if (mapa.containsKey(clave)) {
+			        	// La clave ya existe, puedes manejar la situación de la manera que desees
+			        	System.out.println("La clave '" + clave + "' ya existe en el HashMap. No se puede agregar el valor '" + valor + "'.");
+			            // Aquí puedes lanzar una excepción, mostrar un mensaje de advertencia, etc.
+			        } else {
+			            // La clave no existe, se agrega el nuevo par clave-valor al HashMap
+			            mapa.put(clave, valor);
+			        }
+		    	}
+			 
+			 funcionaria pero la verdad que eso esté en esta clase no tiene relacion . extender una i o una imple es lo + correcto */
+				
 			//	.. etc	.. 
