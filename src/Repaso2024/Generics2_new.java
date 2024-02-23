@@ -7,6 +7,22 @@ import java.util.List;
 
 // ESTE FILE 2024 CONTIENE LA POSTA DE LA BASE DE WILDCARDS. LUEGO EN WILDCARDS SE VE MAS EN DETALLE TEORICO Y MAS EJEMPLOS.(FEB 2024)
 
+// LA POSTA DE GENERICS ES X EJ EL API COLLECTION DE JAVA , LIST<T> ETC . DEFINEN ASI XA Q SIRVA XA CUALQUIER COSA OSEA COMO 
+// 		CONTENEDOR! DE CUALQUIER TIPO! PERO CONCRETO . Q LO DEFINAS Y ESA INSTANCIA SERá DE ESE TIPO CONCRETO. SIN HERENCIA SIN NADA
+//		SINO CONCRETO. EN ESTE TIPO DE APIS ES MEJOR USAR T Q WILDCARDS CON RANGO YA QUE JUSTAMENTE QUIEREN Y APUNTAN A QUE VOS 
+//		TENGAS Q ESPECIFICAR 1 TIPO CONCRETO CUALQUIERA PERO 1 ESPECIFICO POR INSTANCIA (X CONTENEDOR CONCRETO QUE USES)
+//		TOTAL ADENTRO ESTAS CLASES ITERAN ELEMS SIN IMPORTAR EL TIPO OSEA OBJECTS OSEA SON TODAS OPS DE CONTENEDOR/COLECCION/BOLSA
+//		Y NO APUNTAN AL NEGOCIO U OTRA COSA SINO A SOLO DARTE ESA FUNCIONALIDAD Y Q DEFINAS CONCRETO C/ CONTENEDOR Q USES , ONDA
+//		"YO TE SIRVO XA TODO" PERO 1 TIPO SIEMPRE X INSTANCIA CONTENEDOR OBJETO CONCRETO ASI VOS USAS DE ESA MANERA Q ES LO MAS COMUN
+//		EJ LISTA DE STRINGS, LISTA DE INTEGERS ETC. ( luego si tu negocio ej un carro contenedor de productos quiere usar wildcards
+//		tipo carro<T> LISTAiNTERNA de elems SUPER T , y q ganes lo q necesites en el propio api del entorno (reuso, polimorfo,flex,etc)
+//		eso ya es otra cosa. ( asi q por eso se usan los generics normales concretos <T> (k,v,u x etc) y ademas por lo siguiente 
+//		si yo quiero un contenedor de cosas generico xa operar sobre estas sin importarme el tipo, entonces que mejor que hacer  1
+//		generic, q sirve xa todo tipo, pero q te obligue a definir un tipo concreto x uso ( x instancia) x obj contenedor_x concreto 
+//		si lo hicieran con ? ya aceptaria de todo siempre xa cada instancia y en estos apis de java (colls etc) no se busca eso sino  
+//      qsean generic indep del tipo su func gen y ent qsirvan xa todo sin restriccion (T) pero x /c/inst definas 1tipo especifico !!
+
+			// ^__ ESTA ES LA POSTA DE TODO !!! ver generics1.java ejemplos ytube "mito" y ej motos ytube "hello world java" etc !!!!  
 /**
  * EN ESTA CLASE POR FIN VOY A EXPLICAR POSTA GENERICS Y WILDCARDS 
  * 	( q son 2 cosas <>s pero ligadas , osea wildcards es una extension de generics que permite otras cosas ) 
