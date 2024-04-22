@@ -14,25 +14,11 @@ public class TryWithResources {
 		        System.out.println(scanner2.nextLine());
 		    }
 		    
-		} catch (FileNotFoundException | ArithmeticException excepcionesparticulares) { //2 en una x lo gral xq se tratan igual   
-																							//		o una parte igual
-			// trat simple:
+		} catch (FileNotFoundException | ArithmeticException excepcionesparticulares) { 
+																						
+
 			System.out.println(excepcionesparticulares instanceof FileNotFoundException? "FileNotFoundException":"ArithmeticException"); 
 																											 
-			// ó un switch case si quiero tratar partes diferente con varias acciones 
-			
-			/* 
-				switch (excepcionesparticulares.getClass().getName()) {
-					case "FileNotFoundException" :
-						throw new RuntimeException(excepcionesparticulares);
-						break;
-					case "ArithmeticException": 
-						throw new RuntimeException(excepcionesparticulares);
-						break;	
-					
-					default:
-						throw new IllegalArgumentException("Unexpected value: " + key);
-				}*/
 				
 		}catch (Exception e) {
 			throw new RuntimeException(e);

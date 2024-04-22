@@ -18,27 +18,19 @@ public class Colecciones {
 
 	public static void main(String[] args) {
 		
-		//array
 		
 		char[] carr = new char[50];
-		for (int i = 0; i < 50; i++) carr[i] = (char)i; //charVar=iNum; no funca  no es compatible//(char)i; me guarda el codigo ascii de i 
-		for (int i = 0; i  < carr.length ; i++) System.out.print((int) carr[i] ); //como imprimo un char numerico ent casteo a int 
-																				  //	xa imprimirlo.
+		for (int i = 0; i < 50; i++) carr[i] = (char)i;  ascii de i 
+		for (int i = 0; i  < carr.length ; i++) System.out.print((int) carr[i] ); 
+																				  
 		
-		//API COLLECTIONS:		( ejs de los mas basicos / mas comunmente usados )
-		//--- ----------- 		______________________________________________________________________
-
-		//ARRAY
-		//_____
 		
-			List<String> listNombres = Arrays.asList("car","noe","lali","chiqui"); //new ArrayList();
+			List<String> listNombres = Arrays.asList("car","noe","lali","chiqui"); 
 			
-			System.out.println("\n " + listNombres.getClass()); // Arrys.asList me devuelve un arrayList 
+			System.out.println("\n " + listNombres.getClass()); 
 			
-			listNombres.forEach(System.out::println);//(s-> System.out.print("\n" + s )); 
+			listNombres.forEach(System.out::println);
 		
-		//LISTA
-		//_____
 			
 			List<String> listProfesiones = new LinkedList();
 			listProfesiones.add("Ingeniero en Sistemas");
@@ -51,94 +43,37 @@ public class Colecciones {
 			
 			listProfesiones.forEach(System.out::println);
 			
-		//SET
-		//___
-			//List<Integer> listNumeroOrden = new LinkedList<>();
 			Set<Integer> setNumerosOrden = new HashSet<>();
 			setNumerosOrden.add(1);
 			setNumerosOrden.add(2);
 			System.out.println();
 			try {
 				setNumerosOrden.add(2);
-				setNumerosOrden.forEach(System.out::println); // Saber: si ya existia no arroja exception sino que simplemente no hace nada
+				setNumerosOrden.forEach(System.out::println); 
 
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 		
-			//Entonces: 
-			// Para controlar si un dato aparece repetido al llenar un HashMap y actuar en consecuencia, puedes seguir estos pasos:
 
-				// Antes de agregar un valor al HashMap, verifica si ya existe en el mapa.
-				// puedes manejar la situación de la manera que desees: ya sea reemplazando el valor existente 
-				// con el nuevo valor, lanzando una excepción, mostrando un mensaje de advertencia, o realizando cualquier otra acción.
-			
-				/* Ejemplo:
-
-				 * agregarElemento(mapa, "uno", 1); agregarElemento(mapa, "dos", 2);
-				 * agregarElemento(mapa, "tres", 3); agregarElemento(mapa, "uno", 1); //Intentar agregar una clave repetida
-				 * 
-				 * public static void agregarElemento(HashMap<String, Integer> mapa, String clave, int valor) { 
-				 * 	if (mapa.containsKey(clave)) { // La clave ya existe, puedes manejar la situación de la manera que desees
-				 * 		System.out.println("La clave '" + clave + ya existe en el HashMap. clave dupli: '" + valor + "'.");
-				 * 		// Aquí puedes lanzar una excepción, mostrar un mensaje de advertencia, etc.
-				 *   } else { // La clave no existe, se agrega el nuevo par clave-valor al HashMap
-				 * 		mapa.put(clave, valor); 
-				 *  } 
-				 * }
-				 */
-			
-				//Saber: 
-				
-				// CharlySan: no puedo lanzar una excepcion si el valor q intento add ya existe pero con alguna especie de metodo 
-				// propio de la clase set x ej una especie de mySet.addOrThrow(elem) o algo asi, no existe eso en el api de java ???
-			
-				// ChatGPT35:
-
-				// En la API estándar de Java, no existe un método directo addOrThrow() en la interfaz Set que te permita agregar un 
-				// elemento y lanzar una excepción si ya existe. Sin embargo, puedes implementar tu propio método de extensión o 
-				// utilizar una clase envoltorio personalizada para lograr este comportamiento.
-
-				//	ej implementacion un método de extensión para Set que agregue un elemento y lance una excepción si ya existe:
-				
-				//Set<Integer> mySet = new HashSet<>();
-				//SetExtension<Integer> mySet = new HashSet();
 			 	Set<Integer> mySet = new HashSet<>(); 
 			 	MySetWrapper<Integer> wrappedSet = new MySetWrapper<>(mySet);
 			 	
-			 	//mySet.add(1);
-				//mySet.add(2);
 			 	wrappedSet.add(1);
 			 	wrappedSet.add(2);
 				        
 				        try {
-				        	wrappedSet.addOrThrow(2);//( (SetExtension<Integer>) mySet).addOrThrow(1); //mySet.addOrThrow(1);
+				        	wrappedSet.addOrThrow(2);
 				        } catch (ElementoDuplicadoException e) {
 				            System.out.println("Error: El elemento ya existe en el conjunto.");
 				        }
 				        
 				        System.out.println("Conunto:" + mySet);
 				        
-				//MAP
-				//___ : new j8+: antes usabamos el entryset xa recorrer , y tmb habia q hacer todo a mano lo q j8 me da con mehtods
-				
-				// j7 (old)
-				        // for ( Entry(Integer,Strin> e: map.entrySet() ) syso(e.getKey()+e.getValue();				        
-				//j8+ ( new methods) 
 				        
-				        //1. map.forEach( (k,v) -> syso.print(k+v) ó sino tmb map.entrySet.stream().forEach(syso::println);
-				        //2- putIfAbsent(Integer key, String value) el put comun si existia lo sobreescribe, este lo deja como estaba)
-				        //3- map.computeIfPresent(3, (k,v) -> k + v ) 
-				        //4- map.getOrDefault(5,"valor por defecto"); si no existe (no si es null eh)! ent me da el default (simil a optional)!
-				        //5- Collectors.toMap, ej:
-				        //						Map<Integer,String> mapaRecolectado = map.entrySet().stream()
-						//							.filter(e->strPalabraACoincidir) // o .contains"h" o.startswith o .. etc etc.
-						//							.collect(Collectors.toMap( p -> p.getKey(), p.getValue() );
+				} 
 
-				        
-				} //end-main
-
-			} //end class
+			} 
 			
 			class ElementoDuplicadoException extends RuntimeException {
 				    public ElementoDuplicadoException(String mensaje) {
@@ -167,10 +102,6 @@ public class Colecciones {
 				        return set.add(elem);
 				    }
 
-				    /* @Override
-				    public boolean contains(T elem) {
-				        return set.contains(elem);
-				    } */
 
 				    @Override
 				    public boolean addOrThrow(T elem) {
@@ -180,8 +111,6 @@ public class Colecciones {
 				        return set.add(elem);
 				    }
 
-				    // luego Implementa el resto de métodos de SetExtension delegando a los métodos correspondientes de Set
-				    // ( esto lo hice con btn der -> souce -> generate delegate methods ) !!!!!!!!! todo auto
 				    
 					public void forEach(Consumer<? super T> action) {
 						set.forEach(action);
@@ -267,32 +196,3 @@ public class Colecciones {
 				    
 				}
 				
-			// Otra implementacion podria ser usando herencia normal , extendiendo el hashset con una subclase mia especializada,ej:
-			/*	class MySet<T> extends HashSet<T> {
-				    public boolean addOrThrow(T elem) {
-				        if (contains(elem)) {
-				            throw new ElementoDuplicadoException("El elemento ya existe en el conjunto: " + elem);
-				        }
-				        return add(elem);
-				    }	
-			*/ 
-				
-			/* Otra mas podria haber sido un simple procedimiento en esta clase con un of cointains then add else actionxRepe pero
-			 * esa es la opcion mas pobre porque solo serviria en esta clase, o incluso si lo hiciera static seria una imple de un 
-			 * extend de un set en si pero en esta clase que nada tiene que ver con sets cuando esa extension deberia estar en 
-			 * una subclase o subinterface de set o alguna imple de set, ej, si dese aca lo sig:
-			 * 			
-			 * 	public static void agregarElemento(HashMap<String, Integer> mapa, String clave, int valor) {
-        			if (mapa.containsKey(clave)) {
-			        	// La clave ya existe, puedes manejar la situación de la manera que desees
-			        	System.out.println("La clave '" + clave + "' ya existe en el HashMap. No se puede agregar el valor '" + valor + "'.");
-			            // Aquí puedes lanzar una excepción, mostrar un mensaje de advertencia, etc.
-			        } else {
-			            // La clave no existe, se agrega el nuevo par clave-valor al HashMap
-			            mapa.put(clave, valor);
-			        }
-		    	}
-			 
-			 funcionaria pero la verdad que eso esté en esta clase no tiene relacion . extender una i o una imple es lo + correcto */
-				
-			//	.. etc	.. 
